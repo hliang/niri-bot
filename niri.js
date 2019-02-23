@@ -1,5 +1,5 @@
 require("dotenv").config();
-var keys = require("./keys.js");
+
 var NiriBot = require("./niriBot.js");
 
 // Grab search command line argument
@@ -18,14 +18,17 @@ switch (search) {
         break;
     case "spotify-this-song":
         console.log("Searching for song: " + term);
+        if (term === "") { term = "The Sign"}
         bot.findSong(term);
         break;
     case "movie-this":
         console.log("Searching for movie: " + term);
+        if (term === "") { term = "Mr. Nobody"}
         bot.findMovie(term);
         break;
     case "do-what-it-says":
         console.log("do commands in the txt file: " + term);
+        if (term === "") { term = "random.txt"}
         bot.runCmdInFile(term);
         break;
     default:
