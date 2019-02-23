@@ -7,7 +7,7 @@ var search = process.argv[2];
 // Joining the remaining arguments since a query may contain spaces
 var term = process.argv.slice(3).join(" ");
 
-// Create a new concert/song/movie object
+// Create a new bot object
 var bot = new NiriBot();
 
 // Print whether searching for a song, movie or concert, print the term as well

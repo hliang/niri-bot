@@ -20,7 +20,7 @@ var NiriBot = function () {
                 // not found
                 if (!response.data.isArray) {
                     console.log("Oops, none found");
-                    console.log("=".repeat(maxWidth))
+                    console.log("=".repeat(maxWidth));
                     return;
                 }
                 // select fileds and print to console
@@ -52,6 +52,7 @@ var NiriBot = function () {
 
     // find movie
     this.findMovie = function (movieName) {
+        console.log("=".repeat(maxWidth))
         // Run a request with axios to the OMDB API with the movie specified
         var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
         axios.get(queryUrl)
@@ -59,12 +60,12 @@ var NiriBot = function () {
                 // error
                 if (response.data.Error) {
                     console.log(response.data.Error);
+                    console.log("=".repeat(maxWidth))
                     return;
                 }
                 // get rotten tomato rating
                 let tmtRaging = "";
                 for (let i=0; i < response.data.Ratings.length; i++) {
-                    console.log(response.data.Ratings[i]);
                     if (response.data.Ratings[i].Source == "Rotten Tomatoes") {
                         tmtRaging = response.data.Ratings[i].Value;
                         break;
@@ -75,12 +76,12 @@ var NiriBot = function () {
                 "Year: " + response.data.Year,
                 "Rating: " + response.data.imdbRating + "(IMDB), " + tmtRaging + "(Tomato)",
                 "Country: " + response.data.Country,
-                "Languate: " + response.data.Language,
+                "Language: " + response.data.Language,
                 "Plot: " + response.data.Plot,
                 "Actors: " + response.data.Actors,
                 ];
                 console.log(movieData.join("\n"));
-
+                console.log("=".repeat(maxWidth))
             })
             .catch(function (error) {
                 console.log(error);
